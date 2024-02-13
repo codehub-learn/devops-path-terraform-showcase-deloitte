@@ -17,7 +17,7 @@ module "ec2" {
   egress_port = var.egress_port
 }
 
-#module "s3_bucket" {
-#  source = "github.com/codehub-learn/devops-path-terraform-showcase-deloitte.git/modules/s3"
-#  bucket_name = "${var.prefix}-${local.instance_name}"
-#}
+module "s3_bucket" {
+  source = "github.com/codehub-learn/devops-path-terraform-showcase-deloitte.git/lab04/modules/s3"
+  bucket_name = "${local.instance_name}-s3"
+}
