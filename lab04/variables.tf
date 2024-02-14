@@ -23,3 +23,9 @@ variable "prefix" {
   description = "Prefix for system"
   
 }
+
+
+variable "instance_count" {
+  type = number
+  default =  3
+}

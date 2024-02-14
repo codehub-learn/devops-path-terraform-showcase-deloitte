@@ -15,4 +15,5 @@ module "vm-b" {
   egress_cidr = var.egress_cidr
   ingress_cidr = ["${module.vm-a.vm-public-ip}/32"]
   egress_port = var.egress_port
+  depends_on = [ module.vm-a ]
 }

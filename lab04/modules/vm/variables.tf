@@ -22,3 +22,7 @@ variable "egress_cidr" {
     type = list(string)
     description = "List of CIDRs to be allowed in egress"
 }
+
+variable "db_port" {
+  
+}
