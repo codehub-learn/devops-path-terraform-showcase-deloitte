@@ -44,3 +44,14 @@ resource "aws_instance" "instance" {
   }
   depends_on = [ data.aws_ami.ubuntu ]
 }
+
+check "health_check" {
+  data "http" "instance_web" {
+    url = "http://${aws_instance.instance.public_dns}:8080"
+  }
+
+  assert {
+    condition = data.http.instance_web.status_code == 200
+    error_message = "${data.http.instance_web.url} returned an unhealthy status code"
+  }
+}
