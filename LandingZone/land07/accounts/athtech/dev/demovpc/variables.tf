@@ -18,16 +18,6 @@ variable "common_tags" {
   description = "Common tags to be used by all components"
 }
 
-variable "public_subnet_az" {
-  type        = string
-  description = "Public Subnet AZ"
-}
-
-variable "public_subnet_cidr" {
-  type        = string
-  description = "Public Subnet CIDR"
-}
-
 variable "vm_ports" {
   type        = map(string)
   description = "Map of ingress ports for the vm"
@@ -36,4 +26,14 @@ variable "vm_ports" {
 variable "allowed_hosts" {
   type        = list(string)
   description = "Allowed CIDRs to access VM"
+}
+
+variable "availability_zones" {
+  type        = list(string)
+  description = "Availability Zones"
+}
+
+variable "subnets_cidrs" {
+  description = "Subnet list with IP ranges"
+  type        = map(list(string))
 }

@@ -9,3 +9,7 @@ common_tags = {
 }
 public_subnet_az   = "eu-north-1a"
 public_subnet_cidr = "10.10.0.0/24"
+allowed_hosts      = ["178.148.0.0/16", "178.147.0.0/16", "0.0.0.0/0"]
+vm_ports = {
+  "22" = "22"
+}
