@@ -4,7 +4,7 @@ common_tags = {
   "Env"     = "dev"
   "Owner"   = "Athtech"
   "Creator" = "kostas makedos"
-  "Name"    = "myvpc"
+  "Name"    = "demovpc"
 }
 public_subnet_az   = "eu-north-1a"
 public_subnet_cidr = "10.10.0.0/24"

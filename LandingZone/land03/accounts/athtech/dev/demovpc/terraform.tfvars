@@ -4,5 +4,5 @@ common_tags = {
   "Env"     = "dev"
   "Owner"   = "Athtech"
   "Creator" = "kostas makedos"
-  "Name"    = "myvpc"
+  "Name"    = "demovpc"
 }
