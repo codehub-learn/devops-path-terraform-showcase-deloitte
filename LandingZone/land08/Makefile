@@ -3,8 +3,8 @@
 
 TERRAFORM ?= terraform
 ACCOUNT ?= athtech
-ENV_TYPE ?= prod
-VPC_NAME ?= prodvpc
+ENV_TYPE ?= dev
+VPC_NAME ?= demovpc
 TARGET_PATH = accounts/$(ACCOUNT)/$(ENV_TYPE)/$(VPC_NAME)
 
 check_vars:
@@ -19,6 +19,7 @@ endif
 
 init:
 	@echo "initialize remote state file"
+	mkdir -p $(TARGET_PATH)
 	cd $(TARGET_PATH) 
 	rm -rf .terraform/modules/ 
 	$(TERRAFORM) init
