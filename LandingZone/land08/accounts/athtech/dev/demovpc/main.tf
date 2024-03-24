@@ -17,9 +17,10 @@ module "vm" {
 }
 
 module "s3_bucket" {
+  count  = length(var.environments)
   source = "terraform-aws-modules/s3-bucket/aws"
 
-  bucket = "${var.vpc_name}-aws-demo-app-infra"
+  bucket = "${var.vpc_name}-${var.environments[count.index]}-codehub-demo"
   acl    = "private"
 
   control_object_ownership = true
@@ -32,7 +33,8 @@ module "s3_bucket" {
 }
 
 resource "aws_dynamodb_table" "application_state_lock_dynamodb_table" {
-  name           = "${var.vpc_name}-aws-demo-app-lock"
+  count          = length(var.environments)
+  name           = "${var.vpc_name}-${var.environments[count.index]}-codehub-demo"
   billing_mode   = "PROVISIONED"
   read_capacity  = 20
   write_capacity = 20

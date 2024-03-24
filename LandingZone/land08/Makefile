@@ -6,6 +6,7 @@ ACCOUNT ?= athtech
 ENV_TYPE ?= dev
 VPC_NAME ?= demovpc
 TARGET_PATH = accounts/$(ACCOUNT)/$(ENV_TYPE)/$(VPC_NAME)
+AWS_PROFILE = athtech
 
 check_vars:
 ifndef AWS_PROFILE

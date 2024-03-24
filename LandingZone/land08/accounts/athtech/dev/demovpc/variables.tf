@@ -37,3 +37,8 @@ variable "subnets_cidrs" {
   description = "Subnet list with IP ranges"
   type        = map(list(string))
 }
+
+variable "environments" {
+  description = "Map of environments to create"
+  type        = list(string)
+}
