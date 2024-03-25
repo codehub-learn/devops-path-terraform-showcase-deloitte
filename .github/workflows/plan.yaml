@@ -6,28 +6,32 @@ on:
       - landingzone
 
 jobs:
-  tf_fmt:
-    name: Plan 
+  tf_run:
+    name: Plan
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: 'ApplicationLayers/accounts/athtech/periklis'
+        shell: bash
     steps:
-    - uses: hashicorp/setup-terraform@v3
-    - uses: actions/checkout@v1
+      - name: Checkout
+        users: actions/checkout@v3
 
-    - name: Terraform Init
-      run: terraform init
-      env:
-        #GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        TF_ACTION_WORKING_DIR: 'ApplicationLayers/accounts/athtech/periklis'
-        AWS_ACCESS_KEY_ID:  ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY:  ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
 
-    - name: Terraform Validate
-      run: terraform validate
+      - name: Terraform Init
+        id: init
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        run: terraform init
 
-    - name: Terraform Plan
-      run: terraform plan
-      env:
-        #GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        TF_ACTION_WORKING_DIR: 'ApplicationLayers/accounts/athtech/periklis'
-        AWS_ACCESS_KEY_ID:  ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY:  ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      - name: Terraform Plan
+        id: plan
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        run: terraform plan
+ 
+
