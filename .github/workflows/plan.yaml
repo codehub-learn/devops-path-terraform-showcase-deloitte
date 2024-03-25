@@ -10,12 +10,9 @@ jobs:
     name: Apply latest changes
     runs-on: ubuntu-latest
     timeout-minutes: 10
-    env:
-      OWNER: periklis
-      BASE_WORKING_DIRECTORY: 'ApplicationLayers/accounts/athtech/'
     defaults:
       run:
-        working-directory: "$BASE_WORKING_DIRECTORY/$OWNER"
+        working-directory: 'ApplicationLayers/accounts/athtech/periklis'
         shell: bash
     steps:
       - name: Checkout
