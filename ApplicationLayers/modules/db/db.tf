@@ -8,4 +8,12 @@ resource "aws_db_instance" "default" {
   password             = var.password
   parameter_group_name = "default.mysql5.7"
   skip_final_snapshot  = true
+  tags = merge(
+    var.common_tags,
+    tomap({
+      "Name" = "${var.db_name}",
+      "Classification" = "private"
+    })
+  )
+
 }
