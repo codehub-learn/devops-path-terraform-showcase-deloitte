@@ -5,18 +5,17 @@ on:
     branches:
       - periklis
 
-env:
-  OWNER: periklis
-  BASE_WORKING_DIRECTORY: 'ApplicationLayers/accounts/athtech/'
-
 jobs:
   tf_run:
     name: Apply latest changes
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    env:
+      OWNER: periklis
+      BASE_WORKING_DIRECTORY: 'ApplicationLayers/accounts/athtech/'
     defaults:
       run:
-        working-directory: "$env.BASE_WORKING_DIRECTORY/$env.OWNER"
+        working-directory: "$BASE_WORKING_DIRECTORY/$OWNER"
         shell: bash
     steps:
       - name: Checkout
