@@ -7,6 +7,11 @@ variable "common_tags" {
   type        = map(string)
 }
 
+variable "env_name" {
+  description = "Environment name"
+  type        = string
+}
+
 variable "availability_zones" {
   description = "List of availability zones"
   type        = list(string)
