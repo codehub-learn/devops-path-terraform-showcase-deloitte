@@ -9,7 +9,7 @@ jobs:
   tf_run:
     name: Apply latest changes
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 30
     defaults:
       run:
         working-directory: 'ApplicationLayers/accounts/athtech/periklis'
