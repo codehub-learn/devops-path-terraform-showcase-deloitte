@@ -4,7 +4,7 @@ module "instance" {
   ami_id                    = data.aws_ami.debian.id
   instance_type             = "t3.micro"
   subnet_id                 = data.aws_subnets.private.ids[count.index]
-  security_group_ids        = [aws_security_group.security_group.id]
+  security_group_ids        = [aws_security_group.app_security_group.id]
   user_data              = <<-EOF
               #!/bin/bash
               apt-get update
