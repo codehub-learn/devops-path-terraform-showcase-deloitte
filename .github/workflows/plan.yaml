@@ -3,7 +3,7 @@ name: Plan Infrastructure
 on:
   push:
     branches:
-      - master
+      - landingzone
 
 jobs:
   tf_fmt:
