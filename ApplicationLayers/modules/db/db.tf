@@ -15,5 +15,18 @@ resource "aws_db_instance" "default" {
       "Classification" = "private"
     })
   )
+}
 
+
+resource "aws_db_subnet_group" "db_subnet_group" {
+  name       = "${var.db_name}-subnet-group"
+  subnet_ids = data.aws_subnets.data.ids
+
+  tags = merge(
+    var.common_tags,
+    tomap({
+      "Name" = "${var.db_name}-subnet-group",
+      "Classification" = "private"
+    })
+  )
 }

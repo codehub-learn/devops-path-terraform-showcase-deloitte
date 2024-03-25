@@ -4,3 +4,14 @@ data "aws_vpc" "vpc" {
     values = [var.vpc_name]
   }
 }
+
+data "aws_subnets" "data" {
+  filter {
+    name   = "vpc-id"
+    values = [data.aws_vpc.vpc.id]
+  }
+  filter {
+    name   = "tag:Name"
+    values = ["data*"]
+  }
+}

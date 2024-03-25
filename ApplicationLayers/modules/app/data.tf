@@ -35,7 +35,6 @@ data "aws_subnets" "public" {
   }
 }
 
-
 data "aws_subnets" "data" {
   filter {
     name   = "vpc-id"
