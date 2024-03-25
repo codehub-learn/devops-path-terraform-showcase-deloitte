@@ -1,7 +1,7 @@
 module "db" {
   source                   = "../../../modules/db"
   vpc_name                 = var.vpc_name
-  db_name                  = "${var.env_name}-db"
+  db_name                  = "${var.env_name}db"
   common_tags              = var.common_tags
   username                 = "mydb"
   password                 = "s3cr3t"
