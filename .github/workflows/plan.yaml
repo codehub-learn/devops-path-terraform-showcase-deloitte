@@ -8,15 +8,15 @@ on:
 env:
   OWNER: periklis
   BASE_WORKING_DIRECTORY: 'ApplicationLayers/accounts/athtech/'
-  TF_WORKING_DIRECTORY: "$BASE_WORKING_DIRECTORY/$OWNER"
 
 jobs:
   tf_run:
     name: Apply latest changes
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     defaults:
       run:
-        working-directory: "$TF_WORKING_DIRECTORY"
+        working-directory: "$env.BASE_WORKING_DIRECTORY/$env.OWNER"
         shell: bash
     steps:
       - name: Checkout
