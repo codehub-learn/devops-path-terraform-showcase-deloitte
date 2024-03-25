@@ -14,7 +14,7 @@ endif
 TERRAFORM ?= terraform
 TF_VERSION = $(shell $(TERRAFORM) --version | head -1)
 ACCOUNT ?= athtech
-ENV_TYPE ?= alin
+ENV_TYPE ?= periklis
 APP_NAME ?= 
 TARGET_PATH = accounts/$(ACCOUNT)/$(ENV_TYPE)/$(APP_NAME)
 
