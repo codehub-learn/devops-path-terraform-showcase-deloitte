@@ -6,7 +6,11 @@ resource "aws_db_instance" "default" {
   instance_class       = "db.t3.micro"
   username             = var.username
   password             = var.password
+  vpc_security_group_ids = [aws_security_group.db_security_group.id]
+  apply_immediately = true
+  db_subnet_group_name = aws_db_subnet_group.db_subnet_group.name
   parameter_group_name = "default.mysql5.7"
+
   skip_final_snapshot  = true
   tags = merge(
     var.common_tags,
@@ -20,7 +24,7 @@ resource "aws_db_instance" "default" {
 
 resource "aws_db_subnet_group" "db_subnet_group" {
   name       = "${var.db_name}-subnet-group"
-  subnet_ids = data.aws_subnets.data.ids
+  subnet_ids = data.aws_subnets.private.ids
 
   tags = merge(
     var.common_tags,
