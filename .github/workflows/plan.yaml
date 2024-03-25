@@ -7,7 +7,7 @@ on:
 
 jobs:
   tf_run:
-    name: Plan
+    name: Apply latest changes
     runs-on: ubuntu-latest
     defaults:
       run:
